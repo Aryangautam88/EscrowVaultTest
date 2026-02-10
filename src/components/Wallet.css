@@ -1,0 +1,19 @@
+.wallet-card{
+  background: linear-gradient(135deg,#28a745,#4cd964);
+  color:white;
+  padding:25px;
+  border-radius:14px;
+  text-align:center;
+  box-shadow:0 6px 18px rgba(0,0,0,0.15);
+}
+
+.wallet-title{
+  font-size:20px;
+  opacity:0.9;
+}
+
+.wallet-balance{
+  font-size:36px;
+  margin-top:12px;
+  font-weight:bold;
+}

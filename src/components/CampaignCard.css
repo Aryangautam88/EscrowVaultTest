@@ -1,0 +1,103 @@
+.card{
+  background:white;
+  padding:15px 25px 10px 25px;
+  border-radius:14px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.12);
+  transition:0.3s;
+  margin-bottom: 10px;
+}
+
+
+/* Status Colors */
+.locked{
+  border-left: 8px solid #6c757d;
+  background: #f1f1f1;
+}
+
+.review{
+  border-left: 8px solid #ffc107;
+  background: #fff8db;
+}
+
+.released{
+  border-left: 8px solid #28a745;
+  background: #e9f7ef;
+}
+
+.campaign-title{
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.amount{
+  font-size: 20px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.status{
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.message{
+  margin: 12px 0;
+  color: #555;
+  font-style: italic;
+}
+
+/* Button */
+
+.withdraw-btn{
+  width: 100%;
+  padding: 12px;
+  background: #28a745;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.withdraw-btn:hover{
+  background:#218838;
+}
+
+.withdraw-btn:disabled{
+  background:#999;
+  cursor:not-allowed;
+}
+
+.locked{
+  border-top:8px solid #6c757d;
+}
+
+.review{
+  border-top:8px solid #ffc107;
+}
+
+.released{
+  border-top:8px solid #28a745;
+}
+.withdraw-btn{
+  width:100%;
+  padding:14px;
+  margin-top:15px;
+  font-size:16px;
+  border-radius:10px;
+  background:#28a745;
+  color:white;
+  font-weight:600;
+  border:none;
+  transition:0.2s;
+}
+
+.withdraw-btn:hover{
+  transform:scale(1.03);
+}
+
+.withdraw-btn:disabled{
+  background:#9aa0a6;
+}
