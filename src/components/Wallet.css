@@ -1,19 +1,113 @@
 .wallet-card{
-  background: linear-gradient(135deg,#28a745,#4cd964);
+  background:linear-gradient(145deg,#1f8f4c,#33c46c);
   color:white;
-  padding:25px;
-  border-radius:14px;
-  text-align:center;
-  box-shadow:0 6px 18px rgba(0,0,0,0.15);
+  padding:26px;
+  border-radius:20px;
+  box-shadow:0 18px 40px rgba(0,0,0,0.18);
+  min-height:420px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+/* HEADER */
+
+.wallet-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
 .wallet-title{
-  font-size:20px;
+  font-size:22px;
+  font-weight:700;
+}
+
+.wallet-date{
+  font-size:12px;
+  opacity:0.85;
+}
+
+/* BALANCE BOX */
+
+.balance-box{
+  text-align:center;
+  margin-top:20px;
+  margin-bottom:15px;
+}
+
+.balance-label{
+  font-size:14px;
   opacity:0.9;
 }
 
 .wallet-balance{
-  font-size:36px;
-  margin-top:12px;
-  font-weight:bold;
+  font-size:42px;
+  font-weight:800;
+  margin-top:8px;
+  letter-spacing:1px;
 }
+
+/* INFO */
+
+.wallet-info{
+  background:rgba(255,255,255,0.15);
+  padding:12px;
+  border-radius:12px;
+  font-size:13px;
+  text-align:center;
+  line-height:1.4;
+}
+
+/* ACTION BUTTONS */
+
+.wallet-actions{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-top:18px;
+}
+
+.wallet-btn{
+  padding:16px;
+  border-radius:12px;
+  border:none;
+  margin-top: -14px;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.25s;
+}
+
+.wallet-btn.primary{
+  background:white;
+  color:#1f8f4c;
+}
+
+.wallet-btn.primary:hover{
+  transform:translateY(-2px);
+}
+
+.wallet-btn.secondary{
+  background:transparent;
+  border:2px solid rgba(255,255,255,0.7);
+  color:white;
+}
+
+.wallet-btn.secondary:hover{
+  background:rgba(255,255,255,0.2);
+}
+/* submit button special */
+
+.wallet-btn.submit{
+  padding: 20px;
+  width:100%;
+  margin-top:20px;
+  background:white;
+  color:#1f8f4c;
+  font-weight:700;
+}
+
+/* .wallet-btn.submit:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 18px rgba(251,191,36,0.45);
+} */

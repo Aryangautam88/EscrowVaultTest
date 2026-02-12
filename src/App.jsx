@@ -1,37 +1,83 @@
-import React,{useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
+import Profile from "./pages/Profile";
 import Wallet from "./components/Wallet";
 import CampaignCard from "./components/CampaignCard";
 import DebugControls from "./components/DebugControls";
 import { getCampaign } from "./api/campaignApi";
 import "./App.css";
 
+function App() {
 
-function App(){
+  const [campaign, setCampaign] = useState(null);
+  const [page, setPage] = useState("profile");
 
-  const [campaign,setCampaign] = useState(null);
+  // When brand books influencer
+  const handleBooking = async () => {
+    await fetch("http://localhost:5000/api/campaign/reset", {
+      method: "POST",
+    });
 
-  const fetchData = async ()=>{
+    await fetchData();
+    setPage("dashboard");
+  };
+
+  // Fetch campaign data
+  const fetchData = async () => {
     const data = await getCampaign();
     setCampaign(data);
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     fetchData();
-  },[]);
+  }, []);
 
-  if(!campaign) return <h2>Loading...</h2>;
+  /* PROFILE PAGE */
+  if (page === "profile") {
+    return <Profile onBook={handleBooking} />;
+  }
 
-  return(
+  /* DASHBOARD LOADING */
+  if (!campaign)
+    return <h2 className="loading">Loading Dashboard...</h2>;
+
+  /* DASHBOARD */
+  return (
     <div className="app-container">
 
-      <h1 className="app-title">Escrow Vault Dashboard</h1>
+      {/* HEADER */}
+      <div className="header">
+        <h1 className="app-title">Smart Escrow Vault</h1>
+        <p className="app-subtitle">
+          Secure payment workflow between brand and influencer
+        </p>
+      </div>
 
-      <Wallet balance={campaign.walletBalance} />
+      {/* DASHBOARD */}
+      <div className="dashboard-grid">
 
-      <CampaignCard campaign={campaign} refresh={fetchData} />
+        {/* BRAND PANEL */}
+        <div className="dashboard-col">
+          <h3 className="section-title">Brand Panel</h3>
+          <DebugControls refresh={fetchData} />
+        </div>
 
-      <DebugControls refresh={fetchData} />
+        {/* ESCROW */}
+        <div className="dashboard-col">
+          <h3 className="section-title">Escrow Vault</h3>
+          <CampaignCard campaign={campaign} refresh={fetchData} />
+        </div>
 
+        {/* WALLET */}
+        <div className="dashboard-col">
+          <h3 className="section-title">Influencer Wallet</h3>
+          <Wallet
+            balance={campaign.walletBalance}
+            campaign={campaign}
+            refresh={fetchData}
+          />
+        </div>
+
+      </div>
     </div>
   );
 }

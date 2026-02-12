@@ -1,113 +1,152 @@
-body{
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+*{
+  box-sizing:border-box;
   margin:0;
-  background:#eef1f7;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding:0;
 }
 
+body{
+  font-family:'Inter', sans-serif;
+  background:linear-gradient(180deg,#f4f7fb,#e9eef6);
+  color:#1f2937;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* CONTAINER */
+
 .app-container{
-  max-width:1000px;
-  margin:40px auto;
+  max-width:1400px;
+  width:100%;
+  margin:auto;
+  padding:40px 22px 70px;
+}
+
+/* HEADER */
+
+.header{
+  text-align:center;
+  margin-bottom:42px;
 }
 
 .app-title{
-  text-align:center;
-  margin-bottom:30px;
-  font-size:34px;
-  font-weight:700;
-  color:#2d2d2d;
+  font-size:42px;
+  font-weight:800;
+  letter-spacing:-1px;
+  margin-bottom:6px;
+  background:linear-gradient(90deg,#1d4ed8,#3b82f6,#60a5fa);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
-/* GRID LAYOUT */
+.app-subtitle{
+  color:#64748b;
+  font-size:16px;
+}
+
+/* DASHBOARD GRID (MAIN FIX) */
 
 .dashboard-grid{
   display:grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap:25px;
-  align-items:start;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:32px;
+  align-items:stretch;
 }
 
-/* section titles */
+/* COLUMN */
+
+.dashboard-col{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+/* SECTION TITLE */
 
 .section-title{
+  font-size:18px;
   font-weight:700;
-  margin-bottom:12px;
-  color:#444;
+  color:#334155;
+  margin-bottom:6px;
 }
-/* ---------- TABLET VIEW ---------- */
-@media (max-width: 900px){
+
+/* LOADING */
+
+.loading{
+  text-align:center;
+  margin-top:90px;
+  font-size:22px;
+  font-weight:600;
+}
+
+/* ---------- LARGE LAPTOP (1200px) ---------- */
+
+@media(max-width:1200px){
 
   .dashboard-grid{
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:repeat(2, minmax(0,1fr));
   }
 
 }
 
-/* ---------- MOBILE VIEW ---------- */
-@media (max-width: 600px){
+/* ---------- TABLET (900px) ---------- */
+
+@media(max-width:900px){
+
+  .app-title{
+    font-size:34px;
+  }
 
   .app-container{
-    padding:0 14px;
-    margin:20px auto;
+    padding:30px 18px 60px;
+  }
+
+}
+
+/* ---------- MOBILE LARGE (700px) ---------- */
+
+@media(max-width:700px){
+
+  .dashboard-grid{
+    grid-template-columns:1fr;
+    gap:22px;
   }
 
   .app-title{
-    font-size:26px;
+    font-size:28px;
   }
 
-  .dashboard-grid{
-    grid-template-columns: 1fr;
-    gap:18px;
+  .app-subtitle{
+    font-size:14px;
+  }
+
+}
+
+/* ---------- SMALL MOBILE (480px) ---------- */
+
+@media(max-width:480px){
+
+  .app-container{
+    padding:24px 14px 50px;
   }
 
   .section-title{
     font-size:16px;
-    margin-top:5px;
+  }
+
+  .app-title{
+    font-size:24px;
+    letter-spacing:-0.5px;
   }
 
 }
 
+/* ---------- VERY SMALL DEVICES (360px) ---------- */
 
+@media(max-width:360px){
 
-
-/* #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+  .app-title{
+    font-size:22px;
   }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
 }
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-} */

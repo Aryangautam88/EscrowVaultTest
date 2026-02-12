@@ -151,3 +151,74 @@ exports.depositFunds = async (req,res)=>{
     res.status(500).json({message:"Deposit Failed"});
   }
 };
+
+
+exports.submitWork = async (req,res)=>{
+  try{
+    const campaign = await Campaign.findOne();
+
+    // no funds
+    if(campaign.amount === 0){
+      return res.status(400).json({
+        success:false,
+        message:"No funds in escrow."
+      });
+    }
+
+    // wrong state
+    if(campaign.status !== "ESCROW_LOCKED"){
+      return res.status(400).json({
+        success:false,
+        message:"Work already submitted or not allowed."
+      });
+    }
+
+    // 🔥 CHANGE STATE
+    campaign.status = "UNDER_REVIEW";
+    await campaign.save();
+
+    res.json({
+      success:true,
+      message:"Work submitted. Waiting for brand approval.",
+      status:campaign.status
+    });
+
+  }catch(err){
+    res.status(500).json({
+      success:false,
+      message:"Error submitting work"
+    });
+  }
+};
+
+
+exports.approveCampaign = async (req,res)=>{
+  try{
+    const campaign = await Campaign.findOne();
+
+    if(campaign.status !== "UNDER_REVIEW"){
+      return res.status(400).json({
+        success:false,
+        message:"Campaign not under review"
+      });
+    }
+
+    campaign.status="FUNDS_RELEASED";
+    await campaign.save();
+
+    res.json({
+      success:true,
+      message:"Funds released to influencer",
+      status:campaign.status
+    });
+
+  }catch(err){
+    res.status(500).json({
+      success:false,
+      message:"Approval failed"
+    });
+  }
+};
+
+
+

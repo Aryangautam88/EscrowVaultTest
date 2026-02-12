@@ -4,6 +4,7 @@ import "./CampaignCard.css";
 
 const CampaignCard = ({ campaign, refresh }) => {
 
+
   const [loading, setLoading] = useState(false);
 
   const handleWithdraw = async () => {
@@ -31,7 +32,7 @@ const CampaignCard = ({ campaign, refresh }) => {
   // User guidance messages
   const getMessage = () => {
 
-    
+
     if (campaign.amount === 0)
       return "Brand has not deposited funds yet.";
 
@@ -69,13 +70,34 @@ const CampaignCard = ({ campaign, refresh }) => {
 
   return (
     <div className={`card ${getClass()}`}>
-      <h2>{campaign.name}</h2>
 
-      <h3>Escrow Vault Amount: ₹{campaign.amount}</h3>
-      <h3>Status: {campaign.status}</h3>
+      {/* TOP HEADING */}
+      <div className="vault-heading">Escrow Vault</div>
 
-      <p>{getMessage()}</p>
+      {/* CAMPAIGN NAME */}
+      <h2 className="campaign-name">{campaign.name}</h2>
 
+      {/* STATUS */}
+      <div className="status-row">
+        <span className="status-label">Current Status:</span>
+        <span className="status-badge">
+          {campaign.status === "ESCROW_LOCKED" && "Locked 🔒"}
+          {campaign.status === "UNDER_REVIEW" && "Under Review ⏳"}
+          {campaign.status === "FUNDS_RELEASED" && "Funds Released ✅"}
+        </span>
+      </div>
+
+      {/* AMOUNT */}
+      <div className="amount-box">
+        <div className="amount-label">Funds Held Securely</div>
+        <div className="amount-value">₹{campaign.amount}</div>
+      </div>
+
+      {/* INFO TEXT */}
+      <p className="message">{getMessage()}</p>
+
+
+      {/* WITHDRAW */}
       <button
         className="withdraw-btn"
         disabled={
@@ -90,6 +112,7 @@ const CampaignCard = ({ campaign, refresh }) => {
 
     </div>
   );
+
 };
 
 export default CampaignCard;
